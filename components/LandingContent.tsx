@@ -3,7 +3,7 @@
 import { Card, CardContent, CardHeader, CardTitle } from "./ui/card";
 
 const testimonials = [{
-    name: "Darshankumar",
+    name: "Darshankumarrrr",
     avatar:"D",
     occupation:"Software Developer",
     description:"This is the best application for content generation that I have ever used"
