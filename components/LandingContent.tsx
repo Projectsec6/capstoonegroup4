@@ -12,7 +12,7 @@ const testimonials = [
   },
   {
     name: "Tosin Don",
-    avatar: "The",
+    avatar: "T",
     occupation: "Software Developer",
     description: "Content creation becomes a piece of cake",
   },
