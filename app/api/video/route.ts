@@ -59,7 +59,7 @@ import { NextResponse } from "next/server";
 import Replicate from "replicate";
 
 
-
+import { subscriptionCheck } from "@/lib/subscription";
 
 const replicate = new Replicate({
   auth: process.env.Replicate_AI_API_KEY!,
@@ -85,7 +85,15 @@ export async function POST(
     }
 
     
+<<<<<<< Updated upstream
     
+=======
+    const freeTrial = await checkApiLimit();
+    const isMember = await subscriptionCheck();
+    if(freeTrial !== undefined && freeTrial == false && isMember!==undefined && isMember==false ) {
+      return new NextResponse("Free trials are done,please check our subscription plans", { status: 403 });
+    }
+>>>>>>> Stashed changes
 
     const response = await replicate.run(
       "anotherjesse/zeroscope-v2-xl:71996d331e8ede8ef7bd76eba9fae076d31792e4ddf4ad057779b443d6aea62f",
@@ -96,7 +104,13 @@ export async function POST(
       }
     );
 
+<<<<<<< Updated upstream
     
+=======
+    if(isMember==false){
+      await increaseApiLimit();
+    }
+>>>>>>> Stashed changes
 
     return NextResponse.json(response);
   } catch (error) {
