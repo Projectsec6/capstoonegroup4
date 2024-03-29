@@ -19,9 +19,20 @@
     "next": "14.1.0",
     "react": "^18",
     "react-dom": "^18",
+<<<<<<< Updated upstream
     "tailwind-merge": "^2.2.1",
     "tailwindcss-animate": "^1.0.7",
     "typewriter-effect": "^2.21.0"
+=======
+    "react-hook-form": "^7.50.1",
+    "replicate": "^0.12.3",
+    "stripe": "^14.22.0",
+    "tailwind-merge": "^2.2.1",
+    "tailwindcss-animate": "^1.0.7",
+    "typewriter-effect": "^2.21.0",
+    "zod": "^3.22.4",
+    "zustand": "^4.5.2"
+>>>>>>> Stashed changes
   },
   "devDependencies": {
     "@types/node": "^20",

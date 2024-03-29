@@ -58,7 +58,12 @@ import { auth } from "@clerk/nextjs";
 import { NextResponse } from "next/server";
 import { Configuration, OpenAIApi } from "openai";
 
+<<<<<<< Updated upstream
 
+=======
+import { increaseApiLimit,checkApiLimit } from "@/lib/api-limit";
+import { subscriptionCheck } from "@/lib/subscription";
+>>>>>>> Stashed changes
 
 const configuration = new Configuration({
   apiKey: process.env.OPEN_AI_KEY,
@@ -86,6 +91,14 @@ export async function POST(
       return new NextResponse("Messages are required", { status: 400 });
     }
 
+<<<<<<< Updated upstream
+=======
+    const freeTrial = await checkApiLimit();
+    const isMember = await subscriptionCheck();
+    if(freeTrial !== undefined && freeTrial == false && isMember!==undefined && isMember==false ) {
+      return new NextResponse("Free trials are done,please check our subscription plans", { status: 403 });
+    }
+>>>>>>> Stashed changes
     
 
     const response = await openai.createChatCompletion({
@@ -93,6 +106,13 @@ export async function POST(
       messages
     });
 
+<<<<<<< Updated upstream
+=======
+
+    if(isMember==false){
+      await increaseApiLimit();
+    }
+>>>>>>> Stashed changes
     
 
     return NextResponse.json(response.data.choices[0].message);

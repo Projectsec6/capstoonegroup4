@@ -59,7 +59,12 @@ import { NextResponse } from "next/server";
 import Replicate from "replicate";
 
 
+<<<<<<< Updated upstream
 
+=======
+import { increaseApiLimit,checkApiLimit } from "@/lib/api-limit";
+import { subscriptionCheck } from "@/lib/subscription";
+>>>>>>> Stashed changes
 
 const replicate = new Replicate({
   auth: process.env.Replicate_AI_API_KEY!,
@@ -84,7 +89,15 @@ export async function POST(
       return new NextResponse("Prompt is required", { status: 400 });
     }
 
+<<<<<<< Updated upstream
     
+=======
+    const freeTrial = await checkApiLimit();
+    const isMember = await subscriptionCheck();
+    if(freeTrial !== undefined && freeTrial == false && isMember!==undefined && isMember==false ) {
+      return new NextResponse("Free trials are done,please check our subscription plans", { status: 403 });
+    }
+>>>>>>> Stashed changes
     
 
     const response = await replicate.run(
@@ -97,6 +110,12 @@ export async function POST(
     );
 
     
+<<<<<<< Updated upstream
+=======
+    if(isMember==false){
+      await increaseApiLimit();
+    }
+>>>>>>> Stashed changes
 
     return NextResponse.json(response);
   } catch (error) {
